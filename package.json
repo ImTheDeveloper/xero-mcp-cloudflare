@@ -1,0 +1,28 @@
+{
+	"name": "xero-mcp-cloudflare",
+	"version": "0.0.0",
+	"private": true,
+	"scripts": {
+		"deploy": "wrangler deploy",
+		"dev": "wrangler dev",
+		"format": "oxfmt --write .",
+		"lint:fix": "oxlint --fix",
+		"test": "vitest run",
+		"start": "wrangler dev",
+		"cf-typegen": "wrangler types",
+		"type-check": "tsc --noEmit"
+	},
+	"dependencies": {
+		"@cloudflare/workers-oauth-provider": "^0.0.6",
+		"agents": "^0.8.6",
+		"zod": "^4.3.6"
+	},
+	"devDependencies": {
+		"@types/node": "^25.5.0",
+		"oxfmt": "^0.42.0",
+		"oxlint": "^1.57.0",
+		"typescript": "6.0.2",
+		"vitest": "^4.0.0",
+		"wrangler": "^4.77.0"
+	}
+}

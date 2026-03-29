@@ -1,0 +1,46 @@
+/**
+ * For more details on how to configure Wrangler, refer to:
+ * https://developers.cloudflare.com/workers/wrangler/configuration/
+ */
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "xero-mcp-cloudflare",
+	"main": "src/index.ts",
+	"compatibility_date": "2025-03-10",
+	"compatibility_flags": ["nodejs_compat"],
+	"migrations": [
+		{
+			"new_sqlite_classes": ["XeroMCP"],
+			"tag": "v1"
+		},
+		{
+			"new_sqlite_classes": ["AuthStore"],
+			"tag": "v2"
+		}
+	],
+	"durable_objects": {
+		"bindings": [
+			{
+				"class_name": "XeroMCP",
+				"name": "MCP_OBJECT"
+			},
+			{
+				"class_name": "AuthStore",
+				"name": "AUTH_STORE"
+			}
+		]
+	},
+	"kv_namespaces": [
+		{
+			"binding": "OAUTH_KV",
+			"id": "YOUR_OAUTH_KV_NAMESPACE_ID"
+		}
+	],
+	"vars": {
+		"WORKER_BASE_URL": "https://YOUR-WORKER-NAME.YOUR-SUBDOMAIN.workers.dev",
+		"XERO_OAUTH_SCOPES": "openid profile email offline_access accounting.invoices accounting.contacts accounting.settings accounting.banktransactions accounting.payments.read accounting.budgets.read accounting.manualjournals accounting.reports.balancesheet.read accounting.reports.profitandloss.read accounting.reports.trialbalance.read accounting.reports.executivesummary.read accounting.reports.aged.read accounting.reports.budgetsummary.read"
+	},
+	"observability": {
+		"enabled": true
+	}
+}
