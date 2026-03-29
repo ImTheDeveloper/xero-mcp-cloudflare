@@ -24,5 +24,8 @@
 		"typescript": "6.0.2",
 		"vitest": "^4.0.0",
 		"wrangler": "^4.77.0"
+	},
+	"overrides": {
+		"path-to-regexp": "8.4.0"
 	}
 }
