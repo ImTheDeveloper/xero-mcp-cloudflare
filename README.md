@@ -14,6 +14,8 @@ Remote MCP server for read-only Xero access, deployed on Cloudflare Workers.
 - Cross-chat/session identity continuity via Xero principal ID.
 - Read-only finance/reporting toolset for accountant workflows.
 
+Scope reference: `SCOPES.md`
+
 ## Architecture at a glance
 
 - Connector setup flow: `/authorize` -> Xero consent -> `/callback` -> OAuth completion -> `/mcp`.
@@ -98,3 +100,9 @@ Rules for LLM agents:
 
 - Some Xero endpoints may be entitlement-gated by app/account tier.
 - This project is intentionally read-only for safety.
+
+## Related docs
+
+- Scope bundle and tool mapping: `SCOPES.md`
+- Security policy: `SECURITY.md`
+- Contribution guide: `CONTRIBUTING.md`
