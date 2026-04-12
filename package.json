@@ -13,17 +13,17 @@
 		"type-check": "tsc --noEmit"
 	},
 	"dependencies": {
-		"@cloudflare/workers-oauth-provider": "^0.0.6",
-		"agents": "^0.8.6",
+		"@cloudflare/workers-oauth-provider": "^0.4.0",
+		"agents": "^0.10.1",
 		"zod": "^4.3.6"
 	},
 	"devDependencies": {
-		"@types/node": "^25.5.0",
-		"oxfmt": "^0.42.0",
-		"oxlint": "^1.57.0",
+		"@types/node": "^25.6.0",
+		"oxfmt": "^0.44.0",
+		"oxlint": "^1.59.0",
 		"typescript": "6.0.2",
-		"vitest": "^4.0.0",
-		"wrangler": "^4.77.0"
+		"vitest": "^4.1.4",
+		"wrangler": "^4.81.1"
 	},
 	"overrides": {
 		"path-to-regexp": "8.4.0"
