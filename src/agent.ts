@@ -11,6 +11,7 @@ import {
 import { formatInvoicesResult } from "./tools/invoices";
 import { formatBalanceSheetResult } from "./tools/reports";
 import { formatTenants, switchTenant } from "./tools/tenants";
+import { buildLoginCardResource, buildTenantSwitcherResource } from "./tools/ui/resources";
 import type { SessionState } from "./types";
 import { DEFAULT_SESSION_STATE } from "./types";
 import { XeroApiError } from "./xero/api";
@@ -88,7 +89,10 @@ export class XeroMCP extends McpAgent<Cloudflare.Env, SessionState> {
 			});
 
 			return {
-				content: [{ type: "text", text: buildAddOrganisationResponse(authorizeUrl) }],
+				content: [
+					{ type: "text", text: buildAddOrganisationResponse(authorizeUrl) },
+					buildLoginCardResource({ authorizeUrl }),
+				],
 			};
 		});
 
@@ -110,7 +114,10 @@ export class XeroMCP extends McpAgent<Cloudflare.Env, SessionState> {
 			await this.syncSessionFromAuthStore(principalId);
 			await this.touchSessionActivity();
 			return {
-				content: [{ type: "text", text: formatTenants(this.state.connections, this.state.activeTenantId) }],
+				content: [
+					{ type: "text", text: formatTenants(this.state.connections, this.state.activeTenantId) },
+					buildTenantSwitcherResource(this.state.connections, this.state.activeTenantId),
+				],
 			};
 		});
 
